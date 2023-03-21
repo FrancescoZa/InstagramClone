@@ -1,0 +1,67 @@
+.profilePostContainer{
+    width: 100%;
+    height: 400px;
+    background-color: yellow;
+}
+
+#container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+}
+
+#dummy {
+    margin-top: 75%;
+    /* 4:3 aspect ratio */
+}
+
+#element {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: silver;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+        /* show me! */
+}
+
+#element img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+}
+
+#element img:hover{
+    -webkit-filter: brightness(50%);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    
+}
+
+#element img:hover +#info{
+    opacity: 100;
+}
+
+#info{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 2vw;
+    color: white;
+    opacity: 0;
+}
+
+#info div{
+    padding-left: 20px;
+    padding-right: 20px;
+}

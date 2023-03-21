@@ -1,0 +1,119 @@
+aside{
+
+    height: 100vh;
+    width: 250px;
+    background-color: white;
+    position: fixed;
+    float: left;
+    border: 1px solid rgba(0, 0, 0, 0.322);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+aside div{
+    height: 100px;
+    width: 100%;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2560px-Instagram_logo.svg.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:180px;
+}
+
+.sidebarBtn{
+    width: 90%;
+    height: 50px;
+    margin-top: 10px;
+    border-radius: 40px;
+    border: none;
+    display: flex;
+    align-items: center;
+    background-color: white;
+}
+
+.sidebarBtn:hover{
+    background-color: rgba(220, 220, 220, 0.201);
+}
+
+.sidebarBtn:hover .iconBtn{
+    font-size: 24px;
+}
+
+.sidebarBtn:hover span {
+    font-weight: bold;
+}
+
+.sidebarBtn span{
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.iconBtn{
+    font-size: 22px;
+    margin-left: 20px;
+}
+
+#contentContainer{
+    width: calc(100% - 250px);
+    margin-left: 250px;
+    height: 200vh;
+    display: flex;
+    flex-direction: row;
+    
+}
+
+#storiesAndPostsContainer{
+    width: 60%;
+    height: 100%;
+}
+
+#friendsContainer{
+    width: 40%;
+    height: 100%;
+}
+
+#storiesContainer{
+    width: 100%;
+    height: 150px;
+    position: relative;
+    top: 0;
+}
+
+#postsContainer{
+    width: 100%;
+    height: calc(100% - 150px);
+}
+
+@media (max-width:1200px) {
+
+    aside div {
+        height: 100px;
+        width: 100%;
+        background-image: url("https://cdn-icons-png.flaticon.com/512/87/87390.png?w=360");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 30px;
+    }
+
+    aside {
+        width: 80px;   
+    }
+
+    .sidebarBtn {
+        justify-content: center;
+    }
+
+    .sidebarBtn span {
+       display: none;
+    }
+
+    .iconBtn {
+        margin-left: 0px;
+    }
+
+    #contentContainer {
+        width: calc(100% - 80px);
+         margin-left: 80px;
+    }
+}
