@@ -22,7 +22,7 @@ const LoginForm = ({ setislogin }) => {
   const login = (e) => {
     e.preventDefault();
     setEmail();
-    axios.get("/api/users/").then((res) => {
+    axios.get("/api/users/?id=-1").then((res) => {
       console.log(res.data);
       let id;
       let found = false;

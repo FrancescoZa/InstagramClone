@@ -16,7 +16,13 @@ from rest_framework import generics
 
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
-    queryset = User.objects.all()
+
+    def get_queryset(self):
+        user_id = self.request.GET.get('id')
+        if user_id == '-1':
+            return User.objects.all()
+        else:
+            return User.objects.filter(id = user_id)
 
 class PostViewSet(viewsets.ModelViewSet):
  

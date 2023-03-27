@@ -162,7 +162,7 @@ const Post = ({ post, index }) => {
                   />
                 );
               } else {
-                return <img alt={"proPic"} src={post.proPic} />;
+                return <img alt={"proPic"} src={post.proPic} loading="lazy" />;
               }
             })()}
             <span id="username">{post.username}</span>
@@ -172,7 +172,8 @@ const Post = ({ post, index }) => {
           </div>
           <HiOutlineDotsHorizontal id="moreIcon" onClick={() => handleShow()} />
         </section>
-        <img alt={"post_pic"} id="image" src={post.image} />
+
+        <img alt={"post_pic"} id="image" src={post.image} loading="lazy" />
         <section id="interactiveBar">
           <button onClick={() => postLike()}>
             {liked === -1 ? (
