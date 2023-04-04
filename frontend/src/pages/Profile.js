@@ -11,6 +11,8 @@ const Profile = () => {
 
   const [username, setUsername] = useState("");
   const [pro_pic, setProPic] = useState("");
+  const [caption, setCaption] = useState("");
+  const [fullName, setFullName] = useState("");
   const navigate = useNavigate();
 
   const [posts, setPosts] = useState([
@@ -46,6 +48,8 @@ const Profile = () => {
     console.log(res.data[0]);
     setUsername(res.data[0].username);
     setProPic(res.data[0].pro_pic);
+    setFullName(res.data[0].fullName);
+    setCaption(res.data[0].caption);
   }
 
   useEffect(() => {
@@ -76,9 +80,9 @@ const Profile = () => {
               <span className="label">0</span>
             </div>
             <div style={{ marginTop: "15px" }}>
-              <span style={{ fontWeight: "600" }}>Francesco Zappala</span>
+              <span style={{ fontWeight: "600" }}>{fullName}</span>
             </div>
-            <span>kshbdkhgdchdvdhjvdjhevj</span>
+            <span>{caption}</span>
           </div>
         </section>
         <div className="container">

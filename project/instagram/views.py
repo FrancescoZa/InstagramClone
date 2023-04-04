@@ -4,11 +4,13 @@ from .serializers import UserSerializer
 from .serializers import PostSerializer
 from .serializers import LikeSerializer
 from .serializers import CommentSerializer
+from .serializers import StorySerializer
 
 from .models import User
 from .models import Post
 from .models import Like
 from .models import Comment
+from .models import Story
 
 from django.contrib.auth import get_user_model
 from rest_framework import generics
@@ -35,6 +37,10 @@ class PostViewSet(viewsets.ModelViewSet):
         else:
             return Post.objects.filter(user_id = user_id)
 
+class StoryViewSet(viewsets.ModelViewSet):
+
+    serializer_class = StorySerializer
+    queryset = Story.objects.all()
 
 
 class LikeViewSet(viewsets.ModelViewSet):

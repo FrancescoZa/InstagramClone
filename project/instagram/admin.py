@@ -3,6 +3,7 @@ from .models import User
 from .models import Post
 from .models import Like
 from .models import Comment
+from .models import Story
 
 # Register your models here.
 class UserAdmin(admin.ModelAdmin):
@@ -20,3 +21,7 @@ admin.site.register(Like, LikeAdmin)
 class CommentAdmin(admin.ModelAdmin):
     pass
 admin.site.register(Comment, LikeAdmin)
+
+class StoriesAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(Story, StoriesAdmin)

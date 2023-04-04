@@ -5,6 +5,7 @@ import "../style/LoginStyle.css";
 import axios from "axios";
 const RegisterForm = ({ setislogin }) => {
   const [username, setUsername] = useState("");
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -12,9 +13,9 @@ const RegisterForm = ({ setislogin }) => {
 
   const submit = (e) => {
     e.preventDefault();
-
     if (
       username !== "" &&
+      fullName !== "" &&
       email !== "" &&
       password !== "" &&
       confirmPassword !== ""
@@ -27,6 +28,7 @@ const RegisterForm = ({ setislogin }) => {
         axios
           .post("/api/users/", {
             username: username,
+            fullName: fullName,
             email: email,
             password: password,
           })
@@ -46,6 +48,10 @@ const RegisterForm = ({ setislogin }) => {
 
   const handleUsername = (e) => {
     setUsername(e.target.value);
+  };
+
+  const handleFullName = (e) => {
+    setFullName(e.target.value);
   };
 
   const handleEmail = (e) => {
@@ -69,6 +75,15 @@ const RegisterForm = ({ setislogin }) => {
             type="text"
             placeholder="Enter Username"
             onInput={handleUsername}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicUsername">
+          <Form.Label>Name and surname</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter name and surname"
+            onInput={handleFullName}
           />
         </Form.Group>
 

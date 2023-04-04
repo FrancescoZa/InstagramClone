@@ -8,6 +8,9 @@ class User(models.Model):
     email = models.CharField(max_length=100)
     pro_pic = models.ImageField(null = True, blank = True, upload_to = "images/")
     password = models.CharField(max_length=100)
+    caption = models.TextField(default="", blank=True)
+    fullName = models.CharField(max_length=100, default="")
+
 
 class Post(models.Model):
     id = models.AutoField(primary_key=True)
@@ -16,6 +19,12 @@ class Post(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+class Story(models.Model):
+    id = models.AutoField(primary_key=True)
+    image = models.ImageField(null = True, blank = True, upload_to = "images/")
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="stories")
+    created_at = models.DateTimeField(auto_now_add=True)
 
 class Like(models.Model):
     id = models.AutoField(primary_key=True)

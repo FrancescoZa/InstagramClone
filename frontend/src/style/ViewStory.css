@@ -1,0 +1,86 @@
+
+#modalView{
+    margin-top: 20px;
+}
+
+.barra{
+    height: 4px;
+    width: 100%;
+    margin: 2px;
+    border-radius: 5px;
+}
+
+.active{
+    background-color: white;
+}
+
+.inactive{
+    background-color: rgb(97, 97, 97);
+}
+
+#barraContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+    position: relative;
+    background-color: transparent;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#userInfoContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    position: relative;
+    background-color: transparent;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-top: 10px;
+    margin-bottom: -70px;
+}
+
+#userInfoContainer img{
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 50px;
+}
+
+#userInfoContainer span{
+    color:white;
+    margin-left: 10px;
+}
+
+#actionButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-top: -40px;
+    
+}
+
+#actionButtons button{
+    width:100%;
+    height:30px;
+    border: 0px;
+    background-color: transparent;
+    border-radius: 10px;
+}
+
+#actionButtons button:hover {
+    
+    background-color: rgba(0, 0, 0, 0.49);
+    color:white;
+    font-weight: bold;
+}
+
+
+
+
+

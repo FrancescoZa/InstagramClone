@@ -3,7 +3,7 @@ from .models import User
 from .models import Post
 from .models import Like
 from .models import Comment
-
+from .models import Story
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -47,6 +47,26 @@ class PostSerializer(serializers.ModelSerializer):
         queryset = Comment.objects.filter(post_id = obj.id)
         serializer = CommentSerializer(queryset, many=True)
         return serializer.data
+
+    def get_username(self, obj):
+        try:
+            return obj.user_id.username
+        except:
+            pass
+
+    def get_proPic(self, obj):
+        try:
+            return obj.user_id.pro_pic.url
+        except:
+            pass
+
+class StorySerializer(serializers.ModelSerializer):
+    username = serializers.SerializerMethodField()
+    proPic = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Story
+        fields = '__all__'
 
     def get_username(self, obj):
         try:

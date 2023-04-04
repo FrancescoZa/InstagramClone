@@ -173,7 +173,7 @@ const Post = ({ post, index }) => {
           <HiOutlineDotsHorizontal id="moreIcon" onClick={() => handleShow()} />
         </section>
 
-        <img alt={"post_pic"} id="image" src={post.image} loading="lazy" />
+        <img alt={"post_pic"} id="image" src={post.image} />
         <section id="interactiveBar">
           <button onClick={() => postLike()}>
             {liked === -1 ? (

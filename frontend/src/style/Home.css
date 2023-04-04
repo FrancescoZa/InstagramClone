@@ -78,11 +78,63 @@ aside div{
     height: 150px;
     position: relative;
     top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    padding-left: 7%;
+    overflow-x: scroll;
+  
+}
+
+#storiesContainer::-webkit-scrollbar {
+    width: 0 !important;
 }
 
 #postsContainer{
     width: 100%;
     height: calc(100% - 150px);
+}
+
+.addCenter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.addCenter span{
+    font-size: 15px;
+}
+
+#addStory{
+    max-width: 70px;
+    height: 70px;
+    border-radius: 100px;
+    min-width: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid black;
+    background-color: white;
+}
+
+#addStory:hover {
+    
+    border: 3px solid rgb(113, 113, 113);
+    background-color: white;
+}
+
+#addStory:hover span{
+
+    color: rgb(113, 113, 113)
+}
+
+#addStory span{
+    font-size: 40px;
+    padding-bottom: 6px;
 }
 
 @media (max-width:1200px) {
