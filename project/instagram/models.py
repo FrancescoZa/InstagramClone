@@ -1,5 +1,9 @@
 from django.db import models
-
+from django.utils import timezone
+from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from datetime import timedelta
 # Create your models here.
 
 class User(models.Model):
@@ -40,4 +44,10 @@ class Comment(models.Model):
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+
+@receiver(post_save, sender=Story)
+def schedule_delete_expired_objects(**kwargs):
+    from .tasks import schedule_delete_expired_objects
+    schedule_delete_expired_objects()
     

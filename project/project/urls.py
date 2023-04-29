@@ -18,9 +18,33 @@ from django.urls import path
 from django.urls.conf import include
 from django.conf import settings
 from django.conf.urls.static import static
+
+import atexit
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('instagram.urls')),
 
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+
+# start the scheduler
+from apscheduler.schedulers.background import BackgroundScheduler
+from django.conf import settings
+from instagram import models
+
+scheduler = BackgroundScheduler()
+# scheduler.add_jobstore('django', django_jobs=True)
+scheduler.add_job(func= models.schedule_delete_expired_objects, trigger="interval", seconds=3)
+
+scheduler.start()
+
+# schedule the delete_expired_objects function to run every hour
+# from ..instagram.models import schedule_delete_expired_objects
+models.schedule_delete_expired_objects()
+
+# stop the scheduler when the app is unloaded
+def close_scheduler():
+    scheduler.shutdown()
+
+atexit.register(close_scheduler)

@@ -41,8 +41,20 @@ export default function MyVerticallyCenteredModalView(props) {
           ></img>
         </section>
         <section id="actionButtons">
-          <button onClick={() => setI(index - 1)}>indietro</button>
-          <button onClick={() => setI(index + 1)}>avanti</button>
+          <button
+            onClick={() => {
+              if (index >= 1) setI(index - 1);
+            }}
+          >
+            Previous
+          </button>
+          <button
+            onClick={() => {
+              if (index < usersStories.length - 1) setI(index + 1);
+            }}
+          >
+            Next
+          </button>
         </section>
       </Modal.Body>
       <Modal.Footer>
