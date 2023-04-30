@@ -24,18 +24,17 @@ export default function MyVerticallyCenteredModalView(props) {
     }
   }
 
-  const [skipFirst, setSkipFirst] = useState(true);
   useEffect(() => {
-    if (skipFirst) {
+    if (props.visible)
       setTimeout(() => {
         progressLoading();
-        // setSkipFirst(false);
       }, 100);
-    }
   });
 
+  const { currentIndex, visible, ...newProps } = props;
+
   return (
-    <Modal {...props}>
+    <Modal {...newProps}>
       <Modal.Body id="modalView">
         <section id="barraContainer">
           {(() => {
@@ -43,19 +42,21 @@ export default function MyVerticallyCenteredModalView(props) {
             for (let i = 0; i < usersStories.length; i++) {
               if (index === i) {
                 rows.push(
-                  <div className="barra active">
-                    <div className="progress"></div>
+                  <div key={"barra" + i} className="barra active">
+                    <div key={"loading" + i} className="progress"></div>
                   </div>
                 );
               } else {
-                rows.push(<div className="barra inactive"></div>);
+                rows.push(
+                  <div key={"barra" + i} className="barra inactive"></div>
+                );
               }
             }
             return rows;
           })()}
         </section>
         <section id="userInfoContainer">
-          <img src={usersStories[index].proPic}></img>
+          <img alt="proPic" src={usersStories[index].proPic}></img>
           <span>{usersStories[index].username}</span>
         </section>
         <section id="story">

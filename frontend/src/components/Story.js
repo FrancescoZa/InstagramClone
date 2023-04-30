@@ -23,6 +23,7 @@ const Story = ({ stories, storyIndex }) => {
         stories={stories}
         currentIndex={storyIndex}
         onHide={() => setModalShowViewStory(false)}
+        visible={modalShowViewStory}
       />
     </>
   );
