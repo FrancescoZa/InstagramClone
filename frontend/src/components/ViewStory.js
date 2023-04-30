@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import "../style/ViewStory.css";
 import { MdOutlineDraw } from "react-icons/md";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function MyVerticallyCenteredModalView(props) {
@@ -13,6 +13,27 @@ export default function MyVerticallyCenteredModalView(props) {
 
   const [index, setI] = useState(0);
 
+  function progressLoading() {
+    var progressBar = document.querySelector(".progress");
+    for (var i = 2; i <= 10; i++) {
+      (function (i) {
+        setTimeout(function () {
+          progressBar.style.width = i * 10 + "%"; // set progress to 50%
+        }, i * 1000);
+      })(i);
+    }
+  }
+
+  const [skipFirst, setSkipFirst] = useState(true);
+  useEffect(() => {
+    if (skipFirst) {
+      setTimeout(() => {
+        progressLoading();
+        // setSkipFirst(false);
+      }, 100);
+    }
+  });
+
   return (
     <Modal {...props}>
       <Modal.Body id="modalView">
@@ -21,7 +42,11 @@ export default function MyVerticallyCenteredModalView(props) {
             let rows = [];
             for (let i = 0; i < usersStories.length; i++) {
               if (index === i) {
-                rows.push(<div className="barra active"></div>);
+                rows.push(
+                  <div className="barra active">
+                    <div className="progress"></div>
+                  </div>
+                );
               } else {
                 rows.push(<div className="barra inactive"></div>);
               }
@@ -43,14 +68,28 @@ export default function MyVerticallyCenteredModalView(props) {
         <section id="actionButtons">
           <button
             onClick={() => {
-              if (index >= 1) setI(index - 1);
+              if (index >= 1) {
+                setI(index - 1);
+                setTimeout(() => {
+                  progressLoading();
+                }, 100);
+              } else {
+                props.onHide();
+              }
             }}
           >
             Previous
           </button>
           <button
             onClick={() => {
-              if (index < usersStories.length - 1) setI(index + 1);
+              if (index < usersStories.length - 1) {
+                setI(index + 1);
+                setTimeout(() => {
+                  progressLoading();
+                }, 100);
+              } else {
+                props.onHide();
+              }
             }}
           >
             Next

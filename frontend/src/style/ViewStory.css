@@ -11,11 +11,17 @@
 }
 
 .active{
-    background-color: white;
+    background-color: rgb(97, 97, 97);
 }
 
 .inactive{
     background-color: rgb(97, 97, 97);
+}
+
+.progress {
+    width: 10%;
+    height: 4px !important;
+    background-color: white !important;
 }
 
 #barraContainer{
@@ -28,6 +34,8 @@
     padding-left: 50px;
     padding-right: 50px;
 }
+
+
 
 #userInfoContainer {
     display: flex;
