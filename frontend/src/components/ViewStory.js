@@ -12,16 +12,25 @@ export default function MyVerticallyCenteredModalView(props) {
   );
 
   const [index, setI] = useState(0);
+  const [abort, setAbort] = useState(false);
 
-  function progressLoading() {
-    var progressBar = document.querySelector(".progress");
-    for (var i = 2; i <= 10; i++) {
-      (function (i) {
-        setTimeout(function () {
-          progressBar.style.width = i * 10 + "%"; // set progress to 50%
-        }, i * 1000);
-      })(i);
-    }
+  async function progressLoading() {
+    try {
+      var progressBar = document.querySelector(".progress");
+      for (var i = 2; i <= 10; i++) {
+        progressBar.style.width = i * 10 + "%"; // set progress
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+      }
+
+      console.log(progressBar.style.width);
+      if (progressBar.style.width === "100%") {
+        if (index < usersStories.length - 1) {
+          setI(index + 1);
+        } else {
+          props.onHide();
+        }
+      }
+    } catch (error) {}
   }
 
   useEffect(() => {
@@ -71,9 +80,6 @@ export default function MyVerticallyCenteredModalView(props) {
             onClick={() => {
               if (index >= 1) {
                 setI(index - 1);
-                setTimeout(() => {
-                  progressLoading();
-                }, 100);
               } else {
                 props.onHide();
               }
@@ -83,11 +89,9 @@ export default function MyVerticallyCenteredModalView(props) {
           </button>
           <button
             onClick={() => {
+              setAbort(true);
               if (index < usersStories.length - 1) {
                 setI(index + 1);
-                setTimeout(() => {
-                  progressLoading();
-                }, 100);
               } else {
                 props.onHide();
               }
@@ -98,7 +102,12 @@ export default function MyVerticallyCenteredModalView(props) {
         </section>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={props.onHide}>
+        <Button
+          variant="secondary"
+          onClick={() => {
+            props.onHide();
+          }}
+        >
           Close
         </Button>
       </Modal.Footer>
